@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ffh-navy: #1b2f5b;
+    --ffh-teal: #00bfa5;
+    --ffh-blue: #0077b6;
+    --ffh-danger: #e53935;
+    --ffh-bg: #f4f6fa;
+    --ffh-bg-dark: #0d1117;
+    --ffh-surface-dark: #161b22;
+    --ffh-border-dark: #30363d;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-ffh-bg text-gray-900 antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  html.dark body {
+    @apply bg-ffh-bg-dark text-gray-100;
+  }
+}
+
+@layer components {
+  /* Animated mesh gradient hero background */
+  .mesh-gradient {
+    background: #0a0f1e;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mesh-layer {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 40%, rgba(0, 119, 182, 0.55) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 60% at 80% 20%, rgba(0, 191, 165, 0.4) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 50% at 60% 80%, rgba(27, 47, 91, 0.8) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 40% at 10% 80%, rgba(0, 191, 165, 0.25) 0%, transparent 50%);
+    animation: meshShift 12s ease-in-out infinite alternate;
+  }
+
+  .float-card {
+    animation: floatY 6s ease-in-out infinite;
+    will-change: transform;
+  }
+  .float-card-2 {
+    animation: floatY 7s ease-in-out infinite;
+    animation-delay: -2s;
+    will-change: transform;
+  }
+  .float-card-3 {
+    animation: floatY 5s ease-in-out infinite;
+    animation-delay: -4s;
+    will-change: transform;
+  }
+
+  .notif-1 { animation: pingIn 4s ease-in-out 1s infinite; }
+  .notif-2 { animation: pingIn 4s ease-in-out 3s infinite; }
+  .notif-3 { animation: pingIn 4s ease-in-out 5s infinite; }
+
+  .flow-line {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: drawLine 3s ease-in-out infinite;
+  }
+  .flow-line-2 { animation: drawLine 3s ease-in-out 1s infinite; }
+  .flow-line-3 { animation: drawLine 3s ease-in-out 2s infinite; }
+
+  .feat-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    transition: all 0.25s;
+  }
+  .feat-card:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(0, 191, 165, 0.3);
+    transform: translateY(-3px);
+  }
+
+  .step-line {
+    background: linear-gradient(to right, #00bfa5, #0077b6);
+    height: 2px;
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  /* Glassmorphism card */
+  .glass-card {
+    @apply rounded-xl border border-white/10 backdrop-blur-md;
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  /* Sidebar nav link */
+  .nav-link {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors;
+    @apply text-gray-300 hover:bg-white/10 hover:text-white;
+  }
+
+  .nav-link.active {
+    @apply bg-ffh-teal/20 text-ffh-teal;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-lg bg-ffh-teal px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all;
+    @apply hover:bg-ffh-teal/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ffh-teal;
+    @apply disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Secondary button */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-5 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition-all;
+    @apply hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-400;
+    @apply dark:border-ffh-border-dark dark:bg-ffh-surface-dark dark:text-gray-200 dark:hover:bg-white/10;
+  }
+
+  /* Form input */
+  .form-input {
+    @apply block w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm shadow-sm transition-colors;
+    @apply placeholder:text-gray-400 focus:border-ffh-blue focus:outline-none focus:ring-1 focus:ring-ffh-blue;
+    @apply dark:border-ffh-border-dark dark:bg-ffh-surface-dark dark:text-gray-100 dark:placeholder:text-gray-500;
+  }
+
+  /* Dashboard stat card */
+  .stat-card {
+    @apply rounded-xl border border-gray-200 bg-white p-5 shadow-sm;
+    @apply dark:border-ffh-border-dark dark:bg-ffh-surface-dark;
+  }
+
+  /* Badge variants */
+  .badge-test {
+    @apply inline-flex items-center rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-semibold text-amber-800;
+  }
+
+  .badge-live {
+    @apply inline-flex items-center rounded-full bg-ffh-teal/10 px-2.5 py-0.5 text-xs font-semibold text-ffh-teal;
+  }
+
+  .badge-live-pending {
+    @apply inline-flex items-center rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-semibold text-red-700;
+  }
+}
+
+@keyframes meshShift {
+  0%   { transform: scale(1); }
+  33%  { transform: scale(1.04) translate(1%, 1%); }
+  66%  { transform: scale(1.02) translate(-1%, 2%); }
+  100% { transform: scale(1.06) translate(2%, -1%); }
+}
+
+@keyframes floatY {
+  0%, 100% { transform: translateY(0px) rotate(-2deg); }
+  50%       { transform: translateY(-18px) rotate(1deg); }
+}
+
+@keyframes pingIn {
+  0%   { opacity: 0; transform: translateY(8px) scale(0.9); }
+  20%  { opacity: 1; transform: translateY(0) scale(1); }
+  80%  { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-6px) scale(0.95); }
+}
+
+@keyframes drawLine {
+  0%   { stroke-dashoffset: 200; opacity: 0; }
+  20%  { opacity: 1; }
+  60%  { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes mesh-shift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
