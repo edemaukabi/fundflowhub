@@ -150,12 +150,12 @@ export default function Sidebar({ onClose }: SidebarProps) {
         <div className="shrink-0 border-t border-white/10 p-4">
           <div className="flex items-center gap-3">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-ffh-teal/20 text-sm font-semibold text-ffh-teal">
-              {user.first_name[0]}
+              {user.first_name?.[0] ?? "U"}
             </div>
             <div className="min-w-0">
               <p className="truncate text-sm font-medium text-white">{user.full_name}</p>
               <p className="truncate text-xs capitalize text-gray-400">
-                {user.role.replace("_", " ")}
+                {user.role?.replace("_", " ") ?? "admin"}
               </p>
             </div>
           </div>
