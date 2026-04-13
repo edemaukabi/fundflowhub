@@ -32,7 +32,7 @@ export default function LandingPage() {
           </Link>
           <Link
             to="/register"
-            className="rounded-full px-5 py-2 text-sm font-semibold text-white transition"
+            className="whitespace-nowrap rounded-full px-4 py-2 text-xs font-semibold text-white transition sm:px-5 sm:text-sm"
             style={{ background: "#00BFA5" }}
           >
             Open Account
