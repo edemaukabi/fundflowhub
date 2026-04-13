@@ -53,10 +53,10 @@ export default function LandingPage() {
         </svg>
 
         {/* ── Main content ── */}
-        <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
 
           {/* ── Desktop: two-column grid ── */}
-          <div className="hidden lg:grid lg:grid-cols-2 lg:items-center lg:gap-12 lg:py-28">
+          <div className="hidden lg:grid lg:grid-cols-2 lg:items-center lg:gap-12 lg:py-16">
             {/* Left text */}
             <div>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
@@ -240,7 +240,7 @@ export default function LandingPage() {
             </div>
 
             {/* Browser-framed product preview */}
-            <div className="mx-auto w-full max-w-xl overflow-hidden rounded-2xl shadow-2xl sm:max-w-2xl" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
+            <div className="mx-auto w-full overflow-hidden rounded-2xl shadow-2xl" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
               {/* Browser chrome */}
               <div className="flex items-center gap-2 px-4 py-3" style={{ background: "#111827", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
                 <div className="h-2.5 w-2.5 rounded-full" style={{ background: "#FF5F57" }} />
