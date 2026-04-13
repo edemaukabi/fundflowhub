@@ -41,15 +41,9 @@ export default function LandingPage() {
       </nav>
 
       {/* ── HERO ── */}
-      {/*
-        Strategy: section is exactly 100vh with flex column.
-        pt-[65px] offsets the fixed nav (nav is py-4 + 30px logo ≈ 65px).
-        Content div takes flex-1 so it fills remaining space and centers vertically.
-        Mobile: single column, centered. Desktop (lg): two columns, left-aligned.
-      */}
       <section
-        className="mesh-gradient relative flex flex-col"
-        style={{ background: "#0a0f1e", minHeight: "100vh" }}
+        className="mesh-gradient relative overflow-hidden"
+        style={{ background: "#0a0f1e", paddingTop: "65px" }}
       >
         <div className="mesh-layer" />
         <svg className="absolute inset-0 h-full w-full pointer-events-none" style={{ opacity: 0.12 }} preserveAspectRatio="none">
@@ -58,15 +52,11 @@ export default function LandingPage() {
           <line x1="20%" y1="0" x2="70%" y2="100%" stroke="#00BFA5" strokeWidth="0.5" className="flow-line flow-line-3" />
         </svg>
 
-        {/* Content wrapper — pushes below nav, fills remaining height, centers content */}
-        <div
-          className="relative z-10 flex flex-1 flex-col items-center justify-center"
-          style={{ paddingTop: "65px" }}
-        >
-          <div className="mx-auto w-full max-w-7xl px-6 py-12 sm:px-10 sm:py-16 lg:py-0">
+        {/* ── Main content ── */}
+        <div className="relative z-10 mx-auto max-w-7xl px-6 sm:px-10">
 
-          {/* ── Desktop: two-column ── */}
-          <div className="hidden lg:grid lg:grid-cols-2 lg:items-center lg:gap-16" style={{ minHeight: "calc(100vh - 65px)" }}>
+          {/* ── Desktop: two-column grid ── */}
+          <div className="hidden lg:grid lg:grid-cols-2 lg:items-center lg:gap-12 lg:py-28">
             {/* Left text */}
             <div>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
@@ -205,8 +195,8 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* ── Mobile + Tablet: stacked ── */}
-          <div className="flex flex-col items-center text-center lg:hidden">
+          {/* ── Mobile + Tablet: stacked, centered ── */}
+          <div className="flex flex-col items-center py-16 text-center sm:py-20 lg:hidden">
             {/* Text */}
             <div className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
               style={{ background: "rgba(0,191,165,0.15)", color: "#00BFA5", border: "1px solid rgba(0,191,165,0.25)" }}>
@@ -250,7 +240,7 @@ export default function LandingPage() {
             </div>
 
             {/* Browser-framed product preview */}
-            <div className="w-full overflow-hidden rounded-2xl shadow-2xl" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
+            <div className="mx-auto w-full max-w-xl overflow-hidden rounded-2xl shadow-2xl sm:max-w-2xl" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
               {/* Browser chrome */}
               <div className="flex items-center gap-2 px-4 py-3" style={{ background: "#111827", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
                 <div className="h-2.5 w-2.5 rounded-full" style={{ background: "#FF5F57" }} />
@@ -321,8 +311,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          </div>{/* max-w-7xl */}
-        </div>{/* flex-1 content wrapper */}
+        </div>{/* max-w-7xl */}
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2">
