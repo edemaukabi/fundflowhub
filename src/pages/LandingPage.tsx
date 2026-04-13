@@ -56,7 +56,7 @@ export default function LandingPage() {
         <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-10">
 
           {/* ── Desktop: two-column grid ── */}
-          <div className="hidden lg:grid lg:grid-cols-2 lg:items-center lg:gap-12 lg:py-16">
+          <div className="hidden lg:grid lg:grid-cols-2 lg:items-center lg:gap-12 lg:py-10">
             {/* Left text */}
             <div>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
