@@ -55,9 +55,9 @@ export default function LandingPage() {
           <line x1="20%" y1="0" x2="70%" y2="100%" stroke="#00BFA5" strokeWidth="0.5" className="flow-line flow-line-3" />
         </svg>
 
-        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-8 py-32 lg:grid-cols-2">
+        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-6 py-28 sm:px-10 lg:grid-cols-2 lg:py-32">
           {/* Left: Text */}
-          <div>
+          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
             <div
               className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
               style={{ background: "rgba(0,191,165,0.15)", color: "#00BFA5", border: "1px solid rgba(0,191,165,0.25)" }}
@@ -66,7 +66,7 @@ export default function LandingPage() {
               Trusted by 10,000+ users worldwide
             </div>
 
-            <h1 className="mb-6 text-5xl font-black leading-tight text-white">
+            <h1 className="mb-6 text-4xl font-black leading-tight text-white sm:text-5xl">
               Banking that
               <br />
               <span
@@ -81,11 +81,11 @@ export default function LandingPage() {
               </span>
             </h1>
 
-            <p className="mb-8 max-w-md text-lg leading-relaxed text-white/60">
+            <p className="mb-8 max-w-md text-base leading-relaxed text-white/60 sm:text-lg">
               Open accounts, send money, manage cards, and track every transaction — all in one intelligent platform built for the modern era.
             </p>
 
-            <div className="mb-12 flex flex-wrap gap-4">
+            <div className="mb-12 flex flex-wrap justify-center gap-4 lg:justify-start">
               <Link
                 to="/register"
                 className="flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold text-white transition"
@@ -112,7 +112,7 @@ export default function LandingPage() {
             </div>
 
             {/* Stats */}
-            <div className="flex gap-8">
+            <div className="flex gap-8 justify-center lg:justify-start">
               {[
                 { val: "$2.4B+", label: "Processed monthly" },
                 { val: "99.9%", label: "Uptime SLA" },
