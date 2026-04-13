@@ -23,6 +23,7 @@ const NAV_SECTIONS: NavSection[] = [
     label: "Getting Started",
     items: [
       { id: "gs-overview", label: "Overview" },
+      { id: "gs-architecture", label: "Architecture" },
       { id: "gs-test-mode", label: "Test vs Live Mode" },
       { id: "gs-roles", label: "Roles & Permissions" },
     ],
@@ -374,6 +375,39 @@ export default function DocsPage() {
             requests must include <InlineCode>credentials: "include"</InlineCode> (or{" "}
             <InlineCode>withCredentials: true</InlineCode> in Axios).
           </P>
+
+          {/* ── Architecture ── */}
+          <H2 id="gs-architecture">Architecture</H2>
+          <P>
+            FundFlowHub runs as a <strong className="text-gray-800 dark:text-gray-200">7-container Docker Compose stack</strong> on a
+            self-managed VPS, reverse-proxied by Nginx with Let's Encrypt SSL. The diagram below shows how the
+            services connect.
+          </P>
+          <div className="mb-4 overflow-hidden rounded-xl border border-white/10 bg-[#060a14]">
+            <img
+              src="/system-architecture.png"
+              alt="FundFlowHub system architecture diagram"
+              className="w-full"
+            />
+          </div>
+          <div className="mb-8 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {[
+              { name: "Service 1 — Nginx", desc: "Reverse proxy, SSL termination, load balancer" },
+              { name: "Service 2 — Django API", desc: "Core services: auth, accounts, KYC, cards, profiles" },
+              { name: "Service 3 — PostgreSQL", desc: "Primary data store + automated backup dumps" },
+              { name: "Service 4 — Async Workers", desc: "Celery worker, Celery Beat scheduler, Flower monitor" },
+              { name: "Service 5 — Data Layer", desc: "Redis (cache + broker) + RabbitMQ (message queue)" },
+              { name: "Support Services", desc: "Cloudinary (media/KYC docs) + Mailpit (local email)" },
+            ].map((s) => (
+              <div
+                key={s.name}
+                className="rounded-lg border border-gray-200 bg-gray-50 p-3 dark:border-white/10 dark:bg-white/5"
+              >
+                <p className="mb-0.5 text-xs font-semibold text-gray-800 dark:text-gray-200">{s.name}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">{s.desc}</p>
+              </div>
+            ))}
+          </div>
 
           {/* ── Test vs Live ── */}
           <H2 id="gs-test-mode">Test vs Live Mode</H2>
@@ -928,7 +962,22 @@ PATCH /accounts/{id}/kyc-verify/
             (e.g. <InlineCode>/profiles/all/</InlineCode>).
           </P>
 
-          <div className="h-24" />
+          <div className="mt-16 border-t border-gray-200 pt-8 dark:border-white/10">
+            <p className="text-xs text-gray-400 dark:text-gray-600">
+              Built by{" "}
+              <a
+                href="https://edemaukabi.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 transition hover:text-[#00BFA5] dark:text-gray-500 dark:hover:text-[#00BFA5]"
+              >
+                Edema Ukabi
+              </a>{" "}
+              · FundFlowHub API v1
+            </p>
+          </div>
+
+          <div className="h-12" />
         </div>
       </main>
     </div>
