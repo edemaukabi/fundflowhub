@@ -41,7 +41,7 @@ export default function LandingPage() {
       </nav>
 
       {/* ── HERO ── */}
-      <section className="mesh-gradient relative flex min-h-screen flex-col items-center justify-center" style={{ background: "#0a0f1e" }}>
+      <section className="mesh-gradient relative min-h-screen" style={{ background: "#0a0f1e" }}>
         <div className="mesh-layer" />
 
         {/* SVG flow lines */}
@@ -51,10 +51,10 @@ export default function LandingPage() {
           <line x1="20%" y1="0" x2="70%" y2="100%" stroke="#00BFA5" strokeWidth="0.5" className="flow-line flow-line-3" />
         </svg>
 
-        <div className="relative z-10 w-full max-w-7xl px-6 pb-16 pt-28 sm:px-10 lg:py-0">
+        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-28 sm:px-10 lg:px-12">
 
           {/* ── Desktop: two-column ── */}
-          <div className="hidden lg:grid lg:min-h-screen lg:grid-cols-2 lg:items-center lg:gap-16">
+          <div className="hidden lg:grid lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24" style={{ minHeight: "calc(100vh - 0px)" }}>
             {/* Left text */}
             <div>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
