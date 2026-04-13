@@ -41,137 +41,246 @@ export default function LandingPage() {
       </nav>
 
       {/* ── HERO ── */}
-      <section className="mesh-gradient relative flex min-h-screen items-center" style={{ background: "#0a0f1e" }}>
+      <section className="mesh-gradient relative flex min-h-screen flex-col items-center justify-center" style={{ background: "#0a0f1e" }}>
         <div className="mesh-layer" />
 
         {/* SVG flow lines */}
-        <svg
-          className="absolute inset-0 h-full w-full pointer-events-none"
-          style={{ opacity: 0.12 }}
-          preserveAspectRatio="none"
-        >
+        <svg className="absolute inset-0 h-full w-full pointer-events-none" style={{ opacity: 0.12 }} preserveAspectRatio="none">
           <line x1="0" y1="30%" x2="100%" y2="55%" stroke="#00BFA5" strokeWidth="1" className="flow-line" />
           <line x1="0" y1="60%" x2="100%" y2="25%" stroke="#0077B6" strokeWidth="1" className="flow-line flow-line-2" />
           <line x1="20%" y1="0" x2="70%" y2="100%" stroke="#00BFA5" strokeWidth="0.5" className="flow-line flow-line-3" />
         </svg>
 
-        <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-16 px-6 py-28 sm:px-10 lg:grid-cols-2 lg:py-32">
-          {/* Left: Text */}
-          <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-            <div
-              className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
-              style={{ background: "rgba(0,191,165,0.15)", color: "#00BFA5", border: "1px solid rgba(0,191,165,0.25)" }}
-            >
+        <div className="relative z-10 w-full max-w-7xl px-6 pb-16 pt-28 sm:px-10 lg:py-0">
+
+          {/* ── Desktop: two-column ── */}
+          <div className="hidden lg:grid lg:min-h-screen lg:grid-cols-2 lg:items-center lg:gap-16">
+            {/* Left text */}
+            <div>
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
+                style={{ background: "rgba(0,191,165,0.15)", color: "#00BFA5", border: "1px solid rgba(0,191,165,0.25)" }}>
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full" style={{ background: "#00BFA5" }} />
+                Trusted by 10,000+ users worldwide
+              </div>
+              <h1 className="mb-6 text-5xl font-black leading-tight text-white">
+                Banking that<br />
+                <span style={{ background: "linear-gradient(135deg,#00BFA5,#0077B6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                  flows with you.
+                </span>
+              </h1>
+              <p className="mb-8 max-w-md text-lg leading-relaxed text-white/60">
+                Open accounts, send money, manage cards, and track every transaction — all in one intelligent platform built for the modern era.
+              </p>
+              <div className="mb-12 flex flex-wrap gap-4">
+                <Link to="/register" className="flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold text-white transition"
+                  style={{ background: "linear-gradient(135deg,#00BFA5,#0077B6)", boxShadow: "0 0 32px rgba(0,191,165,0.4)" }}>
+                  Get started free
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                </Link>
+                <Link to="/docs" className="flex items-center gap-2 rounded-full border px-6 py-3.5 text-sm font-semibold text-white transition"
+                  style={{ borderColor: "rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.06)" }}>
+                  <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" /><polygon points="10 8 16 12 10 16 10 8" />
+                  </svg>
+                  View docs
+                </Link>
+              </div>
+              <div className="flex gap-8">
+                {[{ val: "$2.4B+", label: "Processed monthly" }, { val: "99.9%", label: "Uptime SLA" }, { val: "256-bit", label: "Encryption" }].map((s, i) => (
+                  <div key={s.val} className="flex items-center gap-8">
+                    {i > 0 && <div style={{ width: 1, background: "rgba(255,255,255,0.1)", height: 36 }} />}
+                    <div>
+                      <p className="text-2xl font-bold text-white">{s.val}</p>
+                      <p className="mt-0.5 text-xs text-white/40">{s.label}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: floating cards */}
+            <div className="relative flex items-center justify-center" style={{ height: 500 }}>
+              <div className="float-card absolute w-80 overflow-hidden rounded-2xl"
+                style={{ top: 30, right: 20, boxShadow: "0 32px 80px rgba(0,0,0,0.5)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                <div style={{ background: "#1B2F5B", padding: "14px 16px", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 10 }}>Total Balance</p>
+                      <p style={{ color: "#fff", fontSize: 22, fontWeight: 800 }}>$12,450.00</p>
+                    </div>
+                    <div style={{ background: "rgba(0,191,165,0.15)", border: "1px solid rgba(0,191,165,0.3)", borderRadius: 20, padding: "3px 10px" }}>
+                      <span style={{ color: "#00BFA5", fontSize: 10, fontWeight: 600 }}>▲ +2.4%</span>
+                    </div>
+                  </div>
+                </div>
+                <div style={{ background: "#131f3a", padding: "14px 16px" }}>
+                  <svg width="100%" height="60" viewBox="0 0 280 60">
+                    <defs>
+                      <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stopColor="#00BFA5" stopOpacity="0.3" />
+                        <stop offset="100%" stopColor="#00BFA5" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M0,50 L40,38 L80,42 L120,20 L160,28 L200,12 L240,18 L280,8" stroke="#00BFA5" strokeWidth="2" fill="none" strokeLinecap="round" />
+                    <path d="M0,50 L40,38 L80,42 L120,20 L160,28 L200,12 L240,18 L280,8 L280,60 L0,60 Z" fill="url(#chartGrad)" />
+                  </svg>
+                  <div className="mt-2.5 flex flex-col gap-1.5">
+                    {[
+                      { icon: "↓", color: "#00BFA5", bg: "rgba(0,191,165,0.15)", label: "Teller Deposit", amount: "+$2,000", amtColor: "#00BFA5" },
+                      { icon: "→", color: "#E53935", bg: "rgba(229,57,53,0.12)", label: "Transfer to Jane", amount: "-$500", amtColor: "#E53935" },
+                    ].map((tx) => (
+                      <div key={tx.label} className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className="flex h-7 w-7 items-center justify-center rounded-lg" style={{ background: tx.bg }}>
+                            <span style={{ color: tx.color, fontSize: 12, fontWeight: 700 }}>{tx.icon}</span>
+                          </div>
+                          <span style={{ color: "rgba(255,255,255,0.8)", fontSize: 11 }}>{tx.label}</span>
+                        </div>
+                        <span style={{ color: tx.amtColor, fontSize: 11, fontWeight: 700 }}>{tx.amount}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+              <div className="float-card-2 absolute overflow-hidden rounded-2xl"
+                style={{ bottom: 40, left: 10, width: 220, padding: 18, background: "linear-gradient(135deg,#1B2F5B 0%,#0077B6 55%,#00BFA5 100%)", boxShadow: "0 24px 60px rgba(0,0,0,0.4)" }}>
+                <div className="flex items-start justify-between">
+                  <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 9, letterSpacing: "0.1em" }}>FUNDFLOWHUB</p>
+                  <div className="flex">
+                    <div className="h-5 w-5 rounded-full" style={{ background: "#E53935", opacity: 0.85 }} />
+                    <div className="h-5 w-5 rounded-full" style={{ background: "#FFA000", opacity: 0.85, marginLeft: -8 }} />
+                  </div>
+                </div>
+                <p style={{ color: "#fff", fontFamily: "monospace", fontSize: 13, letterSpacing: "0.2em", marginTop: 16, fontWeight: 700 }}>•••• •••• 9871</p>
+                <div className="mt-3 flex justify-between">
+                  <div>
+                    <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 8 }}>HOLDER</p>
+                    <p style={{ color: "#fff", fontSize: 10, fontWeight: 600 }}>JOHN DOE</p>
+                  </div>
+                  <div>
+                    <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 8 }}>EXPIRES</p>
+                    <p style={{ color: "#fff", fontSize: 10, fontWeight: 600 }}>04/28</p>
+                  </div>
+                </div>
+              </div>
+              <div className="notif-1 absolute" style={{ top: 10, left: 30, background: "#1B2F5B", border: "1px solid rgba(0,191,165,0.3)", borderRadius: 14, padding: "10px 14px", minWidth: 180, boxShadow: "0 12px 32px rgba(0,0,0,0.4)" }}>
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 shrink-0 rounded-full" style={{ background: "#00BFA5" }} />
+                  <div>
+                    <p style={{ color: "#fff", fontSize: 11, fontWeight: 600 }}>Transfer Successful</p>
+                    <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 10 }}>$500 sent to Jane Doe</p>
+                  </div>
+                </div>
+              </div>
+              <div className="notif-2 absolute" style={{ bottom: 130, right: 0, background: "#1B2F5B", border: "1px solid rgba(0,119,182,0.4)", borderRadius: 14, padding: "10px 14px", minWidth: 170, boxShadow: "0 12px 32px rgba(0,0,0,0.4)" }}>
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 shrink-0 rounded-full" style={{ background: "#0077B6" }} />
+                  <div>
+                    <p style={{ color: "#fff", fontSize: 11, fontWeight: 600 }}>OTP Verified ✓</p>
+                    <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 10 }}>Security check passed</p>
+                  </div>
+                </div>
+              </div>
+              <div className="notif-3 absolute" style={{ top: 200, left: 0, background: "#0d1a2e", border: "1px solid rgba(0,191,165,0.25)", borderRadius: 14, padding: "10px 14px", minWidth: 160, boxShadow: "0 12px 32px rgba(0,0,0,0.4)" }}>
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 shrink-0 rounded-full" style={{ background: "#00BFA5" }} />
+                  <div>
+                    <p style={{ color: "#fff", fontSize: 11, fontWeight: 600 }}>Interest Credited</p>
+                    <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 10 }}>+$31.00 daily interest</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ── Mobile + Tablet: stacked ── */}
+          <div className="flex flex-col items-center text-center lg:hidden">
+            {/* Text */}
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
+              style={{ background: "rgba(0,191,165,0.15)", color: "#00BFA5", border: "1px solid rgba(0,191,165,0.25)" }}>
               <span className="h-1.5 w-1.5 animate-pulse rounded-full" style={{ background: "#00BFA5" }} />
               Trusted by 10,000+ users worldwide
             </div>
-
-            <h1 className="mb-6 text-4xl font-black leading-tight text-white sm:text-5xl">
-              Banking that
-              <br />
-              <span
-                style={{
-                  background: "linear-gradient(135deg, #00BFA5, #0077B6)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
+            <h1 className="mb-5 text-4xl font-black leading-tight text-white sm:text-5xl">
+              Banking that<br />
+              <span style={{ background: "linear-gradient(135deg,#00BFA5,#0077B6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
                 flows with you.
               </span>
             </h1>
-
-            <p className="mb-8 max-w-md text-base leading-relaxed text-white/60 sm:text-lg">
+            <p className="mb-7 max-w-lg text-base leading-relaxed text-white/60 sm:text-lg">
               Open accounts, send money, manage cards, and track every transaction — all in one intelligent platform built for the modern era.
             </p>
-
-            <div className="mb-12 flex flex-wrap justify-center gap-4 lg:justify-start">
-              <Link
-                to="/register"
-                className="flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold text-white transition"
-                style={{
-                  background: "linear-gradient(135deg,#00BFA5,#0077B6)",
-                  boxShadow: "0 0 32px rgba(0,191,165,0.4)",
-                }}
-              >
+            <div className="mb-8 flex flex-wrap justify-center gap-3">
+              <Link to="/register" className="flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"
+                style={{ background: "linear-gradient(135deg,#00BFA5,#0077B6)", boxShadow: "0 0 28px rgba(0,191,165,0.4)" }}>
                 Get started free
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
-              <Link
-                to="/docs"
-                className="flex items-center gap-2 rounded-full border px-6 py-3.5 text-sm font-semibold text-white transition"
-                style={{ borderColor: "rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.06)" }}
-              >
+              <Link to="/docs" className="flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-semibold text-white"
+                style={{ borderColor: "rgba(255,255,255,0.2)", background: "rgba(255,255,255,0.06)" }}>
                 <svg className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <circle cx="12" cy="12" r="10" /><polygon points="10 8 16 12 10 16 10 8" />
                 </svg>
                 View docs
               </Link>
             </div>
-
-            {/* Stats */}
-            <div className="flex gap-8 justify-center lg:justify-start">
-              {[
-                { val: "$2.4B+", label: "Processed monthly" },
-                { val: "99.9%", label: "Uptime SLA" },
-                { val: "256-bit", label: "Encryption" },
-              ].map((s, i) => (
-                <div key={s.val} className="flex gap-8 items-center">
-                  {i > 0 && <div style={{ width: 1, background: "rgba(255,255,255,0.1)", height: 36 }} />}
+            {/* Stats row */}
+            <div className="mb-10 flex gap-6 sm:gap-10">
+              {[{ val: "$2.4B+", label: "Processed monthly" }, { val: "99.9%", label: "Uptime SLA" }, { val: "256-bit", label: "Encryption" }].map((s, i) => (
+                <div key={s.val} className="flex items-center gap-6 sm:gap-10">
+                  {i > 0 && <div style={{ width: 1, background: "rgba(255,255,255,0.1)", height: 32 }} />}
                   <div>
-                    <p className="text-2xl font-bold text-white">{s.val}</p>
+                    <p className="text-xl font-bold text-white sm:text-2xl">{s.val}</p>
                     <p className="mt-0.5 text-xs text-white/40">{s.label}</p>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
 
-          {/* Right: Animated UI Preview */}
-          <div className="relative hidden lg:flex items-center justify-center" style={{ height: 500 }}>
-            {/* Main dashboard card */}
-            <div
-              className="float-card absolute w-80 overflow-hidden rounded-2xl"
-              style={{
-                top: 30,
-                right: 20,
-                boxShadow: "0 32px 80px rgba(0,0,0,0.5)",
-                border: "1px solid rgba(255,255,255,0.1)",
-              }}
-            >
-              <div style={{ background: "#1B2F5B", padding: "14px 16px", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
-                <div className="flex items-center justify-between">
+            {/* Browser-framed product preview */}
+            <div className="w-full overflow-hidden rounded-2xl shadow-2xl" style={{ border: "1px solid rgba(255,255,255,0.1)" }}>
+              {/* Browser chrome */}
+              <div className="flex items-center gap-2 px-4 py-3" style={{ background: "#111827", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+                <div className="h-2.5 w-2.5 rounded-full" style={{ background: "#FF5F57" }} />
+                <div className="h-2.5 w-2.5 rounded-full" style={{ background: "#FEBC2E" }} />
+                <div className="h-2.5 w-2.5 rounded-full" style={{ background: "#28C840" }} />
+                <div className="mx-3 flex h-5 flex-1 items-center justify-center rounded-md text-xs text-white/20"
+                  style={{ background: "rgba(255,255,255,0.05)" }}>
+                  fundflowhub.edemaukabi.dev/dashboard
+                </div>
+              </div>
+              {/* Dashboard content */}
+              <div style={{ background: "#0d1425", padding: "16px" }}>
+                {/* Balance + chart */}
+                <div className="mb-3 flex items-center justify-between">
                   <div>
-                    <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 10 }}>Total Balance</p>
+                    <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 10 }}>Total Balance</p>
                     <p style={{ color: "#fff", fontSize: 22, fontWeight: 800 }}>$12,450.00</p>
                   </div>
                   <div style={{ background: "rgba(0,191,165,0.15)", border: "1px solid rgba(0,191,165,0.3)", borderRadius: 20, padding: "3px 10px" }}>
                     <span style={{ color: "#00BFA5", fontSize: 10, fontWeight: 600 }}>▲ +2.4%</span>
                   </div>
                 </div>
-              </div>
-              <div style={{ background: "#131f3a", padding: "14px 16px" }}>
-                <svg width="100%" height="60" viewBox="0 0 280 60">
+                <svg width="100%" height="56" viewBox="0 0 600 60" preserveAspectRatio="none">
                   <defs>
-                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                    <linearGradient id="chartGradMob" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="0%" stopColor="#00BFA5" stopOpacity="0.3" />
                       <stop offset="100%" stopColor="#00BFA5" stopOpacity="0" />
                     </linearGradient>
                   </defs>
-                  <path d="M0,50 L40,38 L80,42 L120,20 L160,28 L200,12 L240,18 L280,8" stroke="#00BFA5" strokeWidth="2" fill="none" strokeLinecap="round" />
-                  <path d="M0,50 L40,38 L80,42 L120,20 L160,28 L200,12 L240,18 L280,8 L280,60 L0,60 Z" fill="url(#chartGrad)" />
+                  <path d="M0,55 L100,42 L200,46 L300,22 L400,30 L500,12 L600,6" stroke="#00BFA5" strokeWidth="2" fill="none" strokeLinecap="round" />
+                  <path d="M0,55 L100,42 L200,46 L300,22 L400,30 L500,12 L600,6 L600,60 L0,60 Z" fill="url(#chartGradMob)" />
                 </svg>
-                <div className="mt-2.5 flex flex-col gap-1.5">
+                {/* Transactions */}
+                <div className="mt-3 flex flex-col gap-2">
                   {[
                     { icon: "↓", color: "#00BFA5", bg: "rgba(0,191,165,0.15)", label: "Teller Deposit", amount: "+$2,000", amtColor: "#00BFA5" },
                     { icon: "→", color: "#E53935", bg: "rgba(229,57,53,0.12)", label: "Transfer to Jane", amount: "-$500", amtColor: "#E53935" },
                   ].map((tx) => (
                     <div key={tx.label} className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <div className="flex h-7 w-7 items-center justify-center rounded-lg" style={{ background: tx.bg }}>
-                          <span style={{ color: tx.color, fontSize: 12, fontWeight: 700 }}>{tx.icon}</span>
+                        <div className="flex h-6 w-6 items-center justify-center rounded-lg" style={{ background: tx.bg }}>
+                          <span style={{ color: tx.color, fontSize: 11, fontWeight: 700 }}>{tx.icon}</span>
                         </div>
                         <span style={{ color: "rgba(255,255,255,0.8)", fontSize: 11 }}>{tx.label}</span>
                       </div>
@@ -179,121 +288,33 @@ export default function LandingPage() {
                     </div>
                   ))}
                 </div>
-              </div>
-            </div>
-
-            {/* Virtual Card */}
-            <div
-              className="float-card-2 absolute overflow-hidden rounded-2xl"
-              style={{
-                bottom: 40,
-                left: 10,
-                width: 220,
-                padding: 18,
-                background: "linear-gradient(135deg, #1B2F5B 0%, #0077B6 55%, #00BFA5 100%)",
-                boxShadow: "0 24px 60px rgba(0,0,0,0.4)",
-              }}
-            >
-              <div className="flex items-start justify-between">
-                <p style={{ color: "rgba(255,255,255,0.5)", fontSize: 9, letterSpacing: "0.1em" }}>FUNDFLOWHUB</p>
-                <div className="flex">
-                  <div className="h-5 w-5 rounded-full" style={{ background: "#E53935", opacity: 0.85 }} />
-                  <div className="h-5 w-5 rounded-full" style={{ background: "#FFA000", opacity: 0.85, marginLeft: -8 }} />
-                </div>
-              </div>
-              <p style={{ color: "#fff", fontFamily: "monospace", fontSize: 13, letterSpacing: "0.2em", marginTop: 16, fontWeight: 700 }}>
-                •••• •••• 9871
-              </p>
-              <div className="mt-3 flex justify-between">
-                <div>
-                  <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 8 }}>HOLDER</p>
-                  <p style={{ color: "#fff", fontSize: 10, fontWeight: 600 }}>JOHN DOE</p>
-                </div>
-                <div>
-                  <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 8 }}>EXPIRES</p>
-                  <p style={{ color: "#fff", fontSize: 10, fontWeight: 600 }}>04/28</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Notification 1 */}
-            <div
-              className="notif-1 absolute"
-              style={{
-                top: 10,
-                left: 30,
-                background: "#1B2F5B",
-                border: "1px solid rgba(0,191,165,0.3)",
-                borderRadius: 14,
-                padding: "10px 14px",
-                minWidth: 180,
-                boxShadow: "0 12px 32px rgba(0,0,0,0.4)",
-              }}
-            >
-              <div className="flex items-center gap-2">
-                <div className="h-2 w-2 flex-shrink-0 rounded-full" style={{ background: "#00BFA5" }} />
-                <div>
-                  <p style={{ color: "#fff", fontSize: 11, fontWeight: 600 }}>Transfer Successful</p>
-                  <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 10 }}>$500 sent to Jane Doe</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Notification 2 */}
-            <div
-              className="notif-2 absolute"
-              style={{
-                bottom: 130,
-                right: 0,
-                background: "#1B2F5B",
-                border: "1px solid rgba(0,119,182,0.4)",
-                borderRadius: 14,
-                padding: "10px 14px",
-                minWidth: 170,
-                boxShadow: "0 12px 32px rgba(0,0,0,0.4)",
-              }}
-            >
-              <div className="flex items-center gap-2">
-                <div className="h-2 w-2 flex-shrink-0 rounded-full" style={{ background: "#0077B6" }} />
-                <div>
-                  <p style={{ color: "#fff", fontSize: 11, fontWeight: 600 }}>OTP Verified ✓</p>
-                  <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 10 }}>Security check passed</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Notification 3 */}
-            <div
-              className="notif-3 absolute"
-              style={{
-                top: 200,
-                left: 0,
-                background: "#0d1a2e",
-                border: "1px solid rgba(0,191,165,0.25)",
-                borderRadius: 14,
-                padding: "10px 14px",
-                minWidth: 160,
-                boxShadow: "0 12px 32px rgba(0,0,0,0.4)",
-              }}
-            >
-              <div className="flex items-center gap-2">
-                <div className="h-2 w-2 flex-shrink-0 rounded-full" style={{ background: "#00BFA5" }} />
-                <div>
-                  <p style={{ color: "#fff", fontSize: 11, fontWeight: 600 }}>Interest Credited</p>
-                  <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 10 }}>+$31.00 daily interest</p>
+                {/* Notification pills */}
+                <div className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3">
+                  {[
+                    { dot: "#00BFA5", title: "Transfer Successful", sub: "$500 → Jane Doe", border: "rgba(0,191,165,0.25)" },
+                    { dot: "#0077B6", title: "OTP Verified ✓", sub: "Security passed", border: "rgba(0,119,182,0.3)" },
+                    { dot: "#00BFA5", title: "Interest Credited", sub: "+$31.00 today", border: "rgba(0,191,165,0.2)" },
+                  ].map((n) => (
+                    <div key={n.title} className="flex items-center gap-2 rounded-xl px-3 py-2"
+                      style={{ background: "#1B2F5B", border: `1px solid ${n.border}` }}>
+                      <div className="h-2 w-2 shrink-0 rounded-full" style={{ background: n.dot }} />
+                      <div>
+                        <p style={{ color: "#fff", fontSize: 10, fontWeight: 600 }}>{n.title}</p>
+                        <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 9 }}>{n.sub}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
+
         </div>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2">
           <p className="text-xs font-medium text-white/30">Scroll to explore</p>
-          <div
-            className="animate-pulse"
-            style={{ width: 1, height: 40, background: "linear-gradient(to bottom, rgba(255,255,255,0.3), transparent)" }}
-          />
+          <div className="animate-pulse" style={{ width: 1, height: 40, background: "linear-gradient(to bottom,rgba(255,255,255,0.3),transparent)" }} />
         </div>
       </section>
 
