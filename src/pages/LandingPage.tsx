@@ -41,20 +41,32 @@ export default function LandingPage() {
       </nav>
 
       {/* ── HERO ── */}
-      <section className="mesh-gradient relative min-h-screen" style={{ background: "#0a0f1e" }}>
+      {/*
+        Strategy: section is exactly 100vh with flex column.
+        pt-[65px] offsets the fixed nav (nav is py-4 + 30px logo ≈ 65px).
+        Content div takes flex-1 so it fills remaining space and centers vertically.
+        Mobile: single column, centered. Desktop (lg): two columns, left-aligned.
+      */}
+      <section
+        className="mesh-gradient relative flex flex-col"
+        style={{ background: "#0a0f1e", minHeight: "100vh" }}
+      >
         <div className="mesh-layer" />
-
-        {/* SVG flow lines */}
         <svg className="absolute inset-0 h-full w-full pointer-events-none" style={{ opacity: 0.12 }} preserveAspectRatio="none">
           <line x1="0" y1="30%" x2="100%" y2="55%" stroke="#00BFA5" strokeWidth="1" className="flow-line" />
           <line x1="0" y1="60%" x2="100%" y2="25%" stroke="#0077B6" strokeWidth="1" className="flow-line flow-line-2" />
           <line x1="20%" y1="0" x2="70%" y2="100%" stroke="#00BFA5" strokeWidth="0.5" className="flow-line flow-line-3" />
         </svg>
 
-        <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-28 sm:px-10 lg:px-12">
+        {/* Content wrapper — pushes below nav, fills remaining height, centers content */}
+        <div
+          className="relative z-10 flex flex-1 flex-col items-center justify-center"
+          style={{ paddingTop: "65px" }}
+        >
+          <div className="mx-auto w-full max-w-7xl px-6 py-12 sm:px-10 sm:py-16 lg:py-0">
 
           {/* ── Desktop: two-column ── */}
-          <div className="hidden lg:grid lg:grid-cols-2 lg:items-center lg:gap-16 lg:py-24" style={{ minHeight: "calc(100vh - 0px)" }}>
+          <div className="hidden lg:grid lg:grid-cols-2 lg:items-center lg:gap-16" style={{ minHeight: "calc(100vh - 65px)" }}>
             {/* Left text */}
             <div>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold"
@@ -309,7 +321,8 @@ export default function LandingPage() {
             </div>
           </div>
 
-        </div>
+          </div>{/* max-w-7xl */}
+        </div>{/* flex-1 content wrapper */}
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2">
