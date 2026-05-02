@@ -145,6 +145,12 @@ export default function LoginPage() {
                 </div>
               )}
 
+              <div className="flex justify-end">
+                <Link to="/forgot-password" className="text-xs text-gray-400 hover:text-ffh-blue dark:text-gray-500 dark:hover:text-ffh-blue transition-colors">
+                  Forgot password?
+                </Link>
+              </div>
+
               <Button type="submit" className="w-full" disabled={isSubmitting}>
                 {isSubmitting && <Loader2 size={16} className="mr-2 animate-spin" />}
                 Sign in
