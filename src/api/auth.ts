@@ -33,4 +33,10 @@ export const authApi = {
   logout: () => api.post("/auth/logout/"),
 
   refreshToken: () => api.post("/auth/refresh/"),
+
+  forgotPassword: (payload: { email: string }) =>
+    api.post("/auth/forgot-password/", payload),
+
+  resetPassword: (payload: { uid: string; token: string; new_password: string }) =>
+    api.post("/auth/forgot-password/confirm/", payload),
 };

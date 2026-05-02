@@ -9,6 +9,8 @@ import LandingPage from "@/pages/LandingPage";
 import LoginPage from "@/pages/auth/LoginPage";
 import OTPPage from "@/pages/auth/OTPPage";
 import RegisterPage from "@/pages/auth/RegisterPage";
+import ForgotPasswordPage from "@/pages/auth/ForgotPasswordPage";
+import ResetPasswordPage from "@/pages/auth/ResetPasswordPage";
 import DocsPage from "@/pages/DocsPage";
 import NotFound from "@/pages/NotFound";
 
@@ -36,6 +38,8 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/verify-otp" element={<OTPPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+          <Route path="/reset-password/:uid/:token" element={<ResetPasswordPage />} />
 
           {/* Protected dashboard */}
           <Route
