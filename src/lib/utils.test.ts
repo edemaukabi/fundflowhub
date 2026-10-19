@@ -7,7 +7,8 @@ describe("cn", () => {
   });
 
   it("handles conditional classes", () => {
-    expect(cn("a", false && "b", "c")).toBe("a c");
+    const isActive = false;
+    expect(cn("a", isActive && "b", "c")).toBe("a c");
   });
 
   it("resolves Tailwind conflicts — last wins", () => {

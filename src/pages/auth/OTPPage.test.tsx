@@ -15,6 +15,10 @@ vi.mock("@/context/AuthContext", () => ({
   useAuth: () => ({ refetchUser: mockRefetchUser }),
 }));
 
+vi.mock("@/context/ThemeContext", () => ({
+  useTheme: () => ({ theme: "light", toggleTheme: vi.fn() }),
+}));
+
 vi.mock("@/api/auth", () => ({
   authApi: { verifyOtp: vi.fn() },
 }));
